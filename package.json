@@ -7,7 +7,9 @@
     "format": "echo \"unimplemented for bmuschko/setup-kubeconform\"",
     "format-check": "echo \"unimplemented for bmuschko/setup-kubeconform\"",
     "lint": "echo \"unimplemented for bmuschko/setup-kubeconform\"",
-    "build": "npm run check && npm run compile",
+    "compile": "ncc build index.js --out dist",
+    "build": "tsc",
+    "pack": "ncc build",
     "check": "npm run format && npm run lint"
   },
   "repository": {
