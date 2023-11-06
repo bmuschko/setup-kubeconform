@@ -4,9 +4,11 @@
   "description": "Sets up the Kubeconform CLI in your GitHub Actions workflow.",
   "main": "index.js",
   "scripts": {
+    "format": "echo \"unimplemented for bmuschko/setup-kubeconform\"",
     "format-check": "echo \"unimplemented for bmuschko/setup-kubeconform\"",
     "lint": "echo \"unimplemented for bmuschko/setup-kubeconform\"",
-    "build": "npm run check && npm run compile"
+    "build": "npm run check && npm run compile",
+    "check": "npm run format && npm run lint"
   },
   "repository": {
     "type": "git",
