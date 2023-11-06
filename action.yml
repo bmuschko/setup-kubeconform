@@ -1,0 +1,14 @@
+name: 'Setup Kubeconform'
+description: 'Sets up the Kubeconform CLI in your GitHub Actions workflow.'
+author: 'Benjamin Muschko'
+inputs:
+  kubeconform_version:
+    description: 'The version of the Kubeconform CLI to install.'
+    default: '0.6.3'
+    required: false
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+branding:
+  icon: 'terminal'
+  color: 'purple'
