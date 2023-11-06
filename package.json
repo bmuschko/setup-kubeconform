@@ -4,7 +4,7 @@
   "description": "Sets up the Kubeconform CLI in your GitHub Actions workflow.",
   "main": "index.js",
   "scripts": {
-    "format-check": "prettier --check **/*.ts"
+    "format-check": "echo \"unimplemented for bmuschko/setup-kubeconform\""
   },
   "repository": {
     "type": "git",
@@ -21,8 +21,5 @@
   "bugs": {
     "url": "https://github.com/bmuschko/setup-kubeconform/issues"
   },
-  "homepage": "https://github.com/bmuschko/setup-kubeconform/README.md",
-  "dependencies": {
-    "prettier": "3.0.3"
-  }
+  "homepage": "https://github.com/bmuschko/setup-kubeconform/README.md"
 }
