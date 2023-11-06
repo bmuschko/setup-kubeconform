@@ -11,6 +11,12 @@
     "url": "git+https://github.com/bmuschko/setup-kubeconform.git"
   },
   "author": "Benjamin Muschko",
+  "keywords": [
+    "github",
+    "actions",
+    "github-actions",
+    "kubeconform"
+  ],
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/bmuschko/setup-kubeconform/issues"
