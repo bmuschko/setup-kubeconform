@@ -4,7 +4,7 @@
   "description": "Sets up the Kubeconform CLI in your GitHub Actions workflow.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format-check": "prettier --check **/*.ts",
   },
   "repository": {
     "type": "git",
