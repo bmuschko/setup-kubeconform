@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "format-check": "echo \"unimplemented for bmuschko/setup-kubeconform\"",
-    "lint": "echo \"unimplemented for bmuschko/setup-kubeconform\""
+    "lint": "echo \"unimplemented for bmuschko/setup-kubeconform\"",
+    "build": "npm run check && npm run compile"
   },
   "repository": {
     "type": "git",
