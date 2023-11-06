@@ -4,7 +4,7 @@
   "description": "Sets up the Kubeconform CLI in your GitHub Actions workflow.",
   "main": "index.js",
   "scripts": {
-    "format-check": "prettier --check **/*.ts",
+    "format-check": "prettier --check **/*.ts"
   },
   "repository": {
     "type": "git",
