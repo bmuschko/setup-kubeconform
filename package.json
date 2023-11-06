@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/bmuschko/setup-kubeconform/issues"
   },
-  "homepage": "https://github.com/bmuschko/setup-kubeconform/README.md"
+  "homepage": "https://github.com/bmuschko/setup-kubeconform/README.md",
+  "dependencies": {
+    "prettier": "3.0.3"
+  }
 }
