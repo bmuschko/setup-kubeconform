@@ -7,7 +7,7 @@
     "format": "echo \"unimplemented for bmuschko/setup-kubeconform\"",
     "format-check": "echo \"unimplemented for bmuschko/setup-kubeconform\"",
     "lint": "echo \"unimplemented for bmuschko/setup-kubeconform\"",
-    "compile": "ncc build index.js --out dist",
+    "compile": "ncc build src/main.ts --out dist",
     "build": "npm run check && npm run compile",
     "check": "npm run format && npm run lint"
   },
@@ -26,5 +26,13 @@
   "bugs": {
     "url": "https://github.com/bmuschko/setup-kubeconform/issues"
   },
-  "homepage": "https://github.com/bmuschko/setup-kubeconform/README.md"
+  "homepage": "https://github.com/bmuschko/setup-kubeconform/README.md",
+  "dependencies": {
+    "@actions/core": "1.10.1",
+    "@actions/tool-cache": "2.0.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "0.38.1",
+    "typescript": "5.2.2"
+  }
 }
