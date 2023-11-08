@@ -9,8 +9,12 @@ export async function run(): Promise<void> {
         const version = core.getInput('kubeconform-version');
         console.log(`Installing kubeconform with version '${version}'`)
 
+        // Determine download URL considering the OS and architecture
+        const downloadURL = getDownloadURL(version)
+        console.log(`Downloading kubeconform binary from '${downloadURL}'`)
+
         // Download the specific version of the tool, e.g. as a tarball
-        const pathToTarball = await tc.downloadTool(getDownloadURL(version))
+        const pathToTarball = await tc.downloadTool(downloadURL)
 
         // Extract the tarball onto the runner
         const pathToCLI = await tc.extractTar(pathToTarball)
