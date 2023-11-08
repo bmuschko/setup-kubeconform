@@ -17,7 +17,7 @@ export async function run(): Promise<void> {
         const pathToTarball = await tc.downloadTool(downloadURL)
 
         // Extract the archive onto the runner
-        const pathToCLI = extractDownloadedBinary(pathToTarball)
+        const pathToCLI = await extractDownloadedBinary(pathToTarball)
 
         // Expose the tool by adding it to the PATH
         core.addPath(pathToCLI)
@@ -59,12 +59,12 @@ function mapFileExtension(os: string): string {
     return os == 'windows' ? 'zip' : 'tar.gz'
 }
 
-async function extractDownloadedBinary(pathToArchive: string): Promise<void> {
+function extractDownloadedBinary(pathToArchive: string): Promise<void> {
     if (pathToArchive.endsWith('.zip')) {
-        return await tc.extractZip(pathToArchive)
+        return tc.extractZip(pathToArchive)
     }
 
-    return await tc.extractTar(pathToArchive)
+    return tc.extractTar(pathToArchive)
 }
 
 run()
