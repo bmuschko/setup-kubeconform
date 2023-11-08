@@ -16,8 +16,8 @@ export async function run(): Promise<void> {
         // Download the specific version of the tool, e.g. as a tarball
         const pathToTarball = await tc.downloadTool(downloadURL)
 
-        // Extract the tarball onto the runner
-        const pathToCLI = await tc.extractTar(pathToTarball)
+        // Extract the archive onto the runner
+        const pathToCLI = extractDownloadedBinary(pathToTarball)
 
         // Expose the tool by adding it to the PATH
         core.addPath(pathToCLI)
@@ -29,10 +29,12 @@ export async function run(): Promise<void> {
 function getDownloadURL(version: string): string {
     const distOS = mapOS(os.platform())
     const distArch = mapArch(os.arch())
-    return util.format('https://github.com/yannh/kubeconform/releases/download/v%s/kubeconform-%s-%s.tar.gz', version, distOS, distArch)
+    const fileExt = mapFileExtension(distOS)
+    return util.format('https://github.com/yannh/kubeconform/releases/download/v%s/kubeconform-%s-%s.%s', version, distOS, distArch, fileExt)
 }
 
-function mapOS(os: string) {
+// See https://nodejs.org/api/os.html#os_os_platform
+function mapOS(os: string): string {
     switch(os) {
         case 'win32':
             return 'windows'
@@ -41,7 +43,8 @@ function mapOS(os: string) {
     }
 }
 
-function mapArch(arch: string) {
+// See https://nodejs.org/api/os.html#osarch
+function mapArch(arch: string): string {
     switch(arch) {
         case 'x32':
             return '386'
@@ -50,6 +53,18 @@ function mapArch(arch: string) {
         default:
             return arch
     }
+}
+
+function mapFileExtension(os: string): string {
+    return os == 'windows' ? 'zip' : 'tar.gz'
+}
+
+async function extractDownloadedBinary(pathToArchive: string): Promise<void> {
+    if (pathToArchive.endsWith('.zip')) {
+        return await tc.extractZip(pathToArchive)
+    }
+
+    return await tc.extractTar(pathToArchive)
 }
 
 run()
