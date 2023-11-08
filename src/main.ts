@@ -6,6 +6,7 @@ const tc = require('@actions/tool-cache');
 async function setup() {
   // Get version of tool to be installed
   const version = core.getInput('kubeconform-version');
+  console.log(`Installing kubeconform with version '${version}'`)
 
   // Download the specific version of the tool, e.g. as a tarball
   const pathToTarball = await tc.downloadTool(getDownloadURL(version));
