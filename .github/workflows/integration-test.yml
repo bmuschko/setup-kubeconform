@@ -1,0 +1,21 @@
+name: Integration Test
+on: [push, pull_request]
+
+jobs:
+  integration-test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Build distribution
+      shell: bash
+      run: |
+        npm install
+        npm run build
+    - name: Set up kubeconform
+      uses: ./
+    - name: Render kubeconform version
+      run: kubeconform -v
