@@ -1,6 +1,7 @@
 {
   "name": "setup-kubeconform",
   "version": "1.0.0",
+  "private": true,
   "description": "Sets up the Kubeconform CLI in your GitHub Actions workflow.",
   "main": "dist/index.js",
   "scripts": {
