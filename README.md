@@ -4,6 +4,8 @@
 
 A GitHub Action that sets up the commandline-based Kubernetes manifest validation tool [Kubeconform](https://github.com/yannh/kubeconform). The tool will be downloaded from the [Kubeconform releases page](https://github.com/yannh/kubeconform/releases), installed, and added to the `PATH` environment variable automatically. All operating systems and architectures are supported for released artifacts.
 
+> **_NOTE:_** Instead of using this action, you may want to run [Kubeconform in a container](https://github.com/yannh/kubeconform#integrating-kubeconform-in-the-ci). Refer to the documentation for more information.
+
 ## Using the Action
 
 It's recommended to use the action as a single setup step. Subsequent steps can directly call the executable. There are no limitation to the options that can be provided to the `kubeconform` command. The following example shows its usage.
