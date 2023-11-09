@@ -10,7 +10,8 @@ export async function run(): Promise<void> {
         console.log(`Installing kubeconform with version '${version}'`)
 
         // Determine download URL considering the OS and architecture
-        const downloadURL = getDownloadURL(version)
+        const distribution = new Distribution(version, os.platform(), os.arch())
+        const downloadURL = distribution.getDownloadURL()
         console.log(`Downloading kubeconform binary from '${downloadURL}'`)
 
         // Download the specific version of the tool, e.g. as a tarball
@@ -26,37 +27,48 @@ export async function run(): Promise<void> {
   }
 }
 
-function getDownloadURL(version: string): string {
-    const distOS = mapOS(os.platform())
-    const distArch = mapArch(os.arch())
-    const fileExt = mapFileExtension(distOS)
-    return util.format('https://github.com/yannh/kubeconform/releases/download/v%s/kubeconform-%s-%s.%s', version, distOS, distArch, fileExt)
-}
+class Distribution {
+    private version: string
+    private os: string
+    private arch: string
+    private fileExt: string
 
-// See https://nodejs.org/api/os.html#os_os_platform
-function mapOS(os: string): string {
-    switch(os) {
-        case 'win32':
-            return 'windows'
-        default:
-            return os
+    constructor(version: string, os: string, arch: string) {
+        this.version = version
+        this.os = this.mapOS(os)
+        this.arch = this.mapArch(arch)
+        this.fileExt = this.mapFileExtension(this.os)
     }
-}
 
-// See https://nodejs.org/api/os.html#osarch
-function mapArch(arch: string): string {
-    switch(arch) {
-        case 'x32':
-            return '386'
-        case 'x64':
-            return 'amd64'
-        default:
-            return arch
+    // See https://nodejs.org/api/os.html#os_os_platform
+    private mapOS(os: string): string {
+        switch(os) {
+            case 'win32':
+                return 'windows'
+            default:
+                return os
+        }
     }
-}
 
-function mapFileExtension(os: string): string {
-    return os == 'windows' ? 'zip' : 'tar.gz'
+    // See https://nodejs.org/api/os.html#osarch
+    private mapArch(arch: string): string {
+        switch(arch) {
+            case 'x32':
+                return '386'
+            case 'x64':
+                return 'amd64'
+            default:
+                return arch
+        }
+    }
+
+    private mapFileExtension(os: string): string {
+        return os == 'windows' ? 'zip' : 'tar.gz'
+    }
+
+    getDownloadURL(): string {
+        return util.format('https://github.com/yannh/kubeconform/releases/download/v%s/kubeconform-%s-%s.%s', this.version, this.os, this.arch, this.fileExt)
+    }
 }
 
 function extractDownloadedBinary(pathToArchive: string): Promise<void> {
