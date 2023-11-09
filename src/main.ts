@@ -1,7 +1,9 @@
-const os = require('os')
-const util = require('util')
-const core = require('@actions/core')
-const tc = require('@actions/tool-cache')
+import * as os from "os"
+
+import * as core from "@actions/core"
+import * as tc from "@actions/tool-cache"
+
+import * as dist from "./distribution"
 
 export async function run(): Promise<void> {
     try {
@@ -10,7 +12,7 @@ export async function run(): Promise<void> {
         console.log(`Installing kubeconform with version '${version}'`)
 
         // Determine download URL considering the OS and architecture
-        const distribution = new Distribution(version, os.platform(), os.arch())
+        const distribution = new dist.KubeconformDistribution(version, os.platform(), os.arch())
         const downloadURL = distribution.getDownloadURL()
         console.log(`Downloading kubeconform binary from '${downloadURL}'`)
 
@@ -27,51 +29,7 @@ export async function run(): Promise<void> {
   }
 }
 
-class Distribution {
-    private version: string
-    private os: string
-    private arch: string
-    private fileExt: string
-
-    constructor(version: string, os: string, arch: string) {
-        this.version = version
-        this.os = this.mapOS(os)
-        this.arch = this.mapArch(arch)
-        this.fileExt = this.mapFileExtension(this.os)
-    }
-
-    // See https://nodejs.org/api/os.html#os_os_platform
-    private mapOS(os: string): string {
-        switch(os) {
-            case 'win32':
-                return 'windows'
-            default:
-                return os
-        }
-    }
-
-    // See https://nodejs.org/api/os.html#osarch
-    private mapArch(arch: string): string {
-        switch(arch) {
-            case 'x32':
-                return '386'
-            case 'x64':
-                return 'amd64'
-            default:
-                return arch
-        }
-    }
-
-    private mapFileExtension(os: string): string {
-        return os == 'windows' ? 'zip' : 'tar.gz'
-    }
-
-    getDownloadURL(): string {
-        return util.format('https://github.com/yannh/kubeconform/releases/download/v%s/kubeconform-%s-%s.%s', this.version, this.os, this.arch, this.fileExt)
-    }
-}
-
-function extractDownloadedBinary(pathToArchive: string): Promise<void> {
+function extractDownloadedBinary(pathToArchive: string): Promise<string> {
     if (pathToArchive.endsWith('.zip')) {
         return tc.extractZip(pathToArchive)
     }
