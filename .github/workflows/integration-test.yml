@@ -22,7 +22,15 @@ jobs:
         npm install
         npm run build
     - name: Set up kubeconform
+      id: setup-kubeconform
       uses: ./
+    - name: Print Kubeconform installation path
+      env:
+        KUBECONFORM_INSTALLATION_PATH: ${{ steps.setup-kubeconform.outputs.installation-path }}
+      run: |
+          echo "Kubeconform installed..."
+          echo "Installation path: ${KUBECONFORM_INSTALLATION_PATH}"
+      shell: bash
     - name: Render kubeconform version
       run: kubeconform -v
     - name: Create Pod YAML file
