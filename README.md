@@ -38,7 +38,7 @@ jobs:
 ### Outputs
 
 |Parameter|Description|
-|:--:|:--:|:--:|:--|
+|:--:|:--:|
 |`installation-path`|The installation path of Kubeconform, empty if it couldn't be installed.|
 
 ### Example
