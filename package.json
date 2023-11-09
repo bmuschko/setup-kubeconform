@@ -4,8 +4,8 @@
   "description": "Sets up the Kubeconform CLI in your GitHub Actions workflow.",
   "main": "dist/index.js",
   "scripts": {
-    "format": "echo \"unimplemented for bmuschko/setup-kubeconform\"",
-    "format-check": "echo \"unimplemented for bmuschko/setup-kubeconform\"",
+    "format": "prettier --write **/*.ts",
+    "format-check": "prettier --check **/*.ts",
     "lint": "echo \"unimplemented for bmuschko/setup-kubeconform\"",
     "compile": "ncc build src/main.ts --out dist",
     "build": "npm run check && npm run compile",
@@ -35,6 +35,7 @@
   "devDependencies": {
     "@types/node": "20.9.0",
     "@vercel/ncc": "0.38.1",
+    "prettier": "3.0.3",
     "typescript": "5.2.2"
   }
 }

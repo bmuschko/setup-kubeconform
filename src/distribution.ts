@@ -1,4 +1,4 @@
-import * as util from "util";
+import * as util from 'util'
 
 export interface ToolDistribution {
     getDownloadURL(): string
@@ -19,7 +19,7 @@ export class KubeconformDistribution implements ToolDistribution {
 
     // See https://nodejs.org/api/os.html#os_os_platform
     private mapOS(os: string): string {
-        switch(os) {
+        switch (os) {
             case 'win32':
                 return 'windows'
             default:
@@ -29,7 +29,7 @@ export class KubeconformDistribution implements ToolDistribution {
 
     // See https://nodejs.org/api/os.html#osarch
     private mapArch(arch: string): string {
-        switch(arch) {
+        switch (arch) {
             case 'x32':
                 return '386'
             case 'x64':
@@ -44,6 +44,12 @@ export class KubeconformDistribution implements ToolDistribution {
     }
 
     getDownloadURL(): string {
-        return util.format('https://github.com/yannh/kubeconform/releases/download/v%s/kubeconform-%s-%s.%s', this.version, this.os, this.arch, this.fileExt)
+        return util.format(
+            'https://github.com/yannh/kubeconform/releases/download/v%s/kubeconform-%s-%s.%s',
+            this.version,
+            this.os,
+            this.arch,
+            this.fileExt
+        )
     }
 }

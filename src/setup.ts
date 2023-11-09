@@ -1,9 +1,9 @@
-import * as os from "os"
+import * as os from 'os'
 
-import * as core from "@actions/core"
-import * as tc from "@actions/tool-cache"
+import * as core from '@actions/core'
+import * as tc from '@actions/tool-cache'
 
-import * as dist from "./distribution"
+import * as dist from './distribution'
 
 export async function setupTool(distribution: dist.ToolDistribution): Promise<void> {
     // Determine download URL considering the OS and architecture
