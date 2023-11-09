@@ -29,7 +29,7 @@ jobs:
 
 See the [Kubeconform usage page](https://github.com/yannh/kubeconform#usage) for more information on available flags, or run `kubeconform --help` to render the list of flags in the console to craft your command.
 
-## Inputs and Outputs
+## Action Inputs and Outputs
 
 The action defines [inputs](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#inputs) and [outputs](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#outputs-for-docker-container-and-javascript-actions). The inputs let you drive the runtime behavior of the action. The outputs retrieve values populated after executing the action.
 
