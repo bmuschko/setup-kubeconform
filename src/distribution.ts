@@ -1,10 +1,10 @@
 import * as util from "util";
 
-export interface Distribution {
+export interface ToolDistribution {
     getDownloadURL(): string
 }
 
-export class KubeconformDistribution implements Distribution {
+export class KubeconformDistribution implements ToolDistribution {
     readonly version: string
     readonly os: string
     readonly arch: string
