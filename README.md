@@ -29,6 +29,8 @@ jobs:
 
 ## Inputs and Outputs
 
+The action defines [inputs](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#inputs) and [outputs](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#outputs-for-docker-container-and-javascript-actions). The inputs let you drive the runtime behavior of the action. The outputs retrieve values populated after executing the action.
+
 ### Inputs
 
 |Parameter|Required|Default Value|Description|
@@ -43,7 +45,7 @@ jobs:
 
 ### Example
 
-The following example shows the use of inputs and outputs.
+The following example shows the use of both inputs and outputs. Here, the default version of Kubeconform has been switched to 0.6.1. The workflow adds a step that renders the installation path after the Kubeconform executable has been installed.
 
 ```yaml
 jobs:
@@ -65,7 +67,4 @@ jobs:
           echo "Kubeconform installed..."
           echo "Installation path: ${KUBECONFORM_INSTALLATION_PATH}"
       shell: bash
-
-    - name: Validate manifests
-      run: kubeconform -summary -verbose .
 ```
