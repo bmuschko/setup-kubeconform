@@ -12,6 +12,9 @@
     "check": "npm run format && npm run lint",
     "test": "jest"
   },
+  "engines": {
+    "node": "20.x"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bmuschko/setup-kubeconform.git"
