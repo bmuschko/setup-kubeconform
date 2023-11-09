@@ -13,5 +13,5 @@ runs:
   using: 'node20'
   main: 'dist/index.js'
 branding:
-  icon: 'terminal'
-  color: 'purple'
+  icon: 'check'
+  color: 'green'
