@@ -25,3 +25,20 @@ jobs:
       uses: ./
     - name: Render kubeconform version
       run: kubeconform -v
+    - name: Create Pod YAML file
+      run: |
+          cat <<EOT >> pod.yaml
+              apiVersion: v1
+              kind: Pod
+              metadata:
+                name: nginx
+              spec:
+                containers:
+                - name: nginx
+                  image: nginx:1.14.2
+                  ports:
+                  - containerPort: 80
+          EOT
+      shell: bash
+    - name: Validate a Pod YAML file with kubeconform
+      run: kubeconform -summary -verbose pod.yaml
