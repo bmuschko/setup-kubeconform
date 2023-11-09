@@ -1,5 +1,3 @@
-import * as os from 'os'
-
 import * as core from '@actions/core'
 import * as tc from '@actions/tool-cache'
 
@@ -8,7 +6,7 @@ import * as dist from './distribution'
 export async function setupTool(distribution: dist.ToolDistribution): Promise<void> {
     // Determine download URL considering the OS and architecture
     const downloadURL = distribution.getDownloadURL()
-    console.log(`Downloading kubeconform binary from '${downloadURL}'`)
+    core.info(`Downloading kubeconform binary from '${downloadURL}'`)
 
     // Download the specific version of the tool, e.g. as a tarball
     const pathToTarball = await tc.downloadTool(downloadURL)
@@ -23,7 +21,7 @@ export async function setupTool(distribution: dist.ToolDistribution): Promise<vo
     core.setOutput('installation-path', pathToCLI)
 }
 
-function extractDownloadedBinary(pathToArchive: string): Promise<string> {
+async function extractDownloadedBinary(pathToArchive: string): Promise<string> {
     if (pathToArchive.endsWith('.zip')) {
         return tc.extractZip(pathToArchive)
     }

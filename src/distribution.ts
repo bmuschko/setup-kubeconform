@@ -40,7 +40,7 @@ export class KubeconformDistribution implements ToolDistribution {
     }
 
     private mapFileExtension(os: string): string {
-        return os == 'windows' ? 'zip' : 'tar.gz'
+        return os === 'windows' ? 'zip' : 'tar.gz'
     }
 
     getDownloadURL(): string {

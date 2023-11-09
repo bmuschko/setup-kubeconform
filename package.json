@@ -6,7 +6,7 @@
   "scripts": {
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
-    "lint": "echo \"unimplemented for bmuschko/setup-kubeconform\"",
+    "lint": "eslint src/**/*.ts",
     "compile": "ncc build src/main.ts --out dist",
     "build": "npm run check && npm run compile",
     "check": "npm run format && npm run lint",
@@ -35,6 +35,8 @@
   "devDependencies": {
     "@types/node": "20.9.0",
     "@vercel/ncc": "0.38.1",
+    "eslint-plugin-github": "4.10.1",
+    "eslint-plugin-jest": "27.6.0",
     "prettier": "3.0.3",
     "typescript": "5.2.2"
   }

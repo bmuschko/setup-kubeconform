@@ -9,7 +9,7 @@ export async function run(): Promise<void> {
     try {
         // Get version of tool to be installed
         const version = core.getInput('kubeconform-version')
-        console.log(`Setting up kubeconform with version '${version}'`)
+        core.info(`Setting up kubeconform with version '${version}'`)
 
         // Set up kubeconform
         const distribution = new dist.KubeconformDistribution(version, os.platform(), os.arch())
