@@ -2,7 +2,7 @@
 
 # setup-kubeconform
 
-A GitHub Action that sets up the commandline-based Kubernetes manifest validation tool [Kubeconform](https://github.com/yannh/kubeconform). The tool will be downloaded from the https://github.com/yannh/kubeconform/releases[releases page], installed, and added to the `PATH` environment variable automatically. All operating systems and architectures are supported for released artifacts.
+A GitHub Action that sets up the commandline-based Kubernetes manifest validation tool [Kubeconform](https://github.com/yannh/kubeconform). The tool will be downloaded from the [releases page](https://github.com/yannh/kubeconform/releases), installed, and added to the `PATH` environment variable automatically. All operating systems and architectures are supported for released artifacts.
 
 ## Using the Action
 
