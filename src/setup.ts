@@ -18,6 +18,9 @@ export async function setupTool(distribution: dist.ToolDistribution): Promise<vo
 
     // Expose the tool by adding it to the PATH
     core.addPath(pathToCLI)
+
+    // Set the installation path as output
+    core.setOutput('installation-path', pathToCLI)
 }
 
 function extractDownloadedBinary(pathToArchive: string): Promise<string> {
