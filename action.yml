@@ -4,13 +4,13 @@ author: 'Benjamin Muschko'
 inputs:
   kubeconform-version:
     description: 'The version of the Kubeconform CLI to install.'
-    default: '0.6.3'
+    default: '0.8.0'
     required: false
 outputs:
   installation-path:
     description: "The installation path of Kubeconform, empty if it couldn't be installed."
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'dist/index.js'
 branding:
   icon: 'check'
