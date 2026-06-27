@@ -20,7 +20,7 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Set up Kubeconform
       uses: bmuschko/setup-kubeconform@v1
@@ -39,7 +39,7 @@ The action defines [inputs](https://docs.github.com/en/actions/creating-actions/
 
 |Parameter|Required|Default Value|Description|
 |:--:|:--:|:--:|:--|
-|`kubeconform-version`|`false`|`0.6.3`|The version of the Kubeconform to be installed. The provided string should not include the prefix `v`.|
+|`kubeconform-version`|`false`|`0.8.0`|The version of the Kubeconform to be installed. The provided string should not include the prefix `v`.|
 
 ### Outputs
 
@@ -56,7 +56,7 @@ jobs:
   kubeconform:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Set up Kubeconform
       id: setup-kubeconform
