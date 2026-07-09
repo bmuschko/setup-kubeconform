@@ -40,7 +40,7 @@
     "@jest/globals": "30.4.1",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@types/jest": "30.0.0",
-    "@types/node": "26.1.0",
+    "@types/node": "26.1.1",
     "esbuild": "0.28.1",
     "eslint": "9.39.4",
     "eslint-plugin-github": "6.0.0",
